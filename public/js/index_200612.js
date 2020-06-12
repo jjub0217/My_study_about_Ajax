@@ -61,3 +61,14 @@ get('https://jsonplaceholder.typicode.com/todos')
 // 파이널리는 자바에서 온 문법이다.
 // 파이널리는 한번만 호출한다.
 // 파이널리도 반드시 하나여야 한다.
+
+// setTimeout(() => throws new Error('Error'), 0);
+function foo () {
+setTimeout(() => throws new Error('Error'), 0);
+}
+// 콜리에서 콜러 방향으로 전파가 된다.
+
+function bar () {
+    foo();
+}
+bar();
