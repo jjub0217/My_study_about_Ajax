@@ -80,3 +80,23 @@ window.onload = () => {
       todos = _todos;
     });
   };
+
+
+
+  const patch = (id, completed) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('PATCH', `/todos/${id}`);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({ completed }));
+    xhr.onload = () => {
+      if (xhr.status === 200 || xhr.status === 201) {
+        const newTodo = JSON.parse(xhr.response);
+        todos = todos.map(todo => todo.id === id ? newTodo : todo);
+        render();
+      } else {
+        console.error(xhr.status);
+      }
+    }
+  };
+
+  patch();
