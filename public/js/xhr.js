@@ -54,8 +54,8 @@ export const ajax = (() => {
             } else {
             reject.error(xhr.status);
             }
-        };
-    
+        }; 
+     
     return {
         get(url) {
         return req('GET', url);
@@ -83,6 +83,9 @@ window.onload = () => {
 
 
 
+
+
+
   const patch = (id, completed) => {
     const xhr = new XMLHttpRequest();
     xhr.open('PATCH', `/todos/${id}`);
@@ -98,5 +101,6 @@ window.onload = () => {
       }
     }
   };
-
   patch();
+
+   
